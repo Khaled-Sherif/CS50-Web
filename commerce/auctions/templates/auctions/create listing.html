@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+
+    <h2>Create Auction</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    <div id='add-auction'>
+        <form action="{% url 'create listing' %}" method="post">
+            {% csrf_token %}
+            {% load widget_tweaks %}
+            {% render_field auction_form.item_name placeholder="Item name" class="form-control"%}
+            {% render_field auction_form.img placeholder="Image url" class="form-control"%}
+            {% render_field auction_form.category placeholder="Choose category" class="form-control"%}
+            {% render_field auction_form.current_price placeholder="Enter price in $" class="form-control"%}
+            {% render_field auction_form.description placeholder="Item description" class="form-control"%}
+            <input class="btn btn-primary" type="submit" value="Post Auction">
+        </form>
+    </div>
+{% endblock %}

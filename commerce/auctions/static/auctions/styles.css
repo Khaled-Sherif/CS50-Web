@@ -1,0 +1,256 @@
+body {
+    padding: 10px;
+}
+
+
+#add-comment form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 2em;
+    row-gap: 1em;
+}
+
+#add-comment [type=submit]{
+    width: fit-content;
+}
+
+#add-comment textarea{
+    height: 8em;
+    max-height: 8em;
+    width: 35%;
+}
+
+#watchist-btn{
+    position: absolute;
+    right: 1.6em;
+    top: 1.2em;
+}
+
+#pop-txt{
+    height: 2.5rem;
+    width: fit-content;
+    padding: .5em;
+    border: 1px solid;
+    border-radius: 0.3em;
+}
+
+#categories{
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    row-gap: 0.7em;
+    font-weight: 700;
+}
+
+#background-info{
+    font-size: 22px;
+    color: grey;
+    text-align: center;
+}
+
+.error{
+    background-color: #fdb0b0;
+}
+
+.success{
+    background-color: #79ffb1;
+}
+
+.listing-card{
+    border: solid 1px #e0dfdf;
+    border-radius: 0.6em;
+    display: flex;
+    height: 15em;
+    column-gap: 5em;
+}
+
+.card-pic{
+    display: flex;
+    background-color: #ececec;
+    position: relative;
+    max-width: 24%;
+    justify-content: center;
+    border-radius: 0.6em;
+    overflow: hidden;
+}
+
+.card-pic img{  
+    position: relative;
+    display: flex;
+    height: 130%;
+    max-width: 100%;
+}
+
+.card-item-info{
+    padding: 2em 0;
+    display: flex;
+    row-gap: 1.6em;
+    flex-direction: column;
+    color: rgb(29, 29, 29);
+}
+
+.card-item-name{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card-item-price{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card-item-desc{
+
+}
+
+.listing-date{
+    font-size: 14px;
+    color: #858585;
+}
+
+.card-listing-date span{
+    font-weight: 500;
+    color: #858585;
+}
+
+
+.cards-container{
+    margin: 2em 0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.4em;
+    
+}
+
+.cards-container:first-child{
+    text-decoration: none;
+    color: black;
+}
+
+.cards-container:first-child :hover{
+    text-decoration: none;
+}
+
+.listing-pic{
+    display: flex;
+    margin: 2em 0 1em;;
+    background-color: #ececec;
+    position: relative;
+    max-height: 13em;
+    align-content: center;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.listing-pic img{
+    position: relative;
+    display: flex;
+    height: 100%;
+    max-width: 24%;
+}
+
+.listing-item-desc p{
+    font-size: 18px;
+}
+
+.listing-item-price{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.bid{
+    row-gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    margin: 0.7em 0;
+}
+
+.bid form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.bid [type=submit]{
+    width: fit-content;
+}
+
+.details{
+    margin: 1em 0;;
+}
+
+.details h6{
+    font-size: 22px;
+}
+
+.details ul{
+    font-size: 14px;
+}
+
+#status {
+    font-size: 14px;
+    font-weight:500;
+}
+
+#add-auction form{
+    margin: 2em 1em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+#add-auction form > *{
+    width: 40%;
+}
+
+#comments{
+    display: flex;
+    margin: 1em 0;
+    row-gap: 1em;
+    flex-direction: column;
+}
+
+#comments h6{
+    font-size: 22px;
+}
+
+#comments ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    max-height: 30em;
+    width: 70%;
+    overflow-y: auto;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.7em;
+}
+
+.comment p{
+    list-style: none;
+    width: 40em;
+    max-height: 8.2em;
+    height: fit-content;
+    margin: 0 1em;
+    padding: 1em 0.8em;
+    border-radius: 1em;
+    background-color: #efefef;
+    border: 1px #d0d0d0 solid;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.7em;
+}
+
+.comment b{
+    color: #ff8839;
+}
+
+

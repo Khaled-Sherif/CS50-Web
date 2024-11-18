@@ -1,0 +1,97 @@
+textarea {
+    min-height: 400px;
+}
+#emails-view{
+    display: none;
+}
+
+.list-group{
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 39.3em;
+}
+
+.list-group > * {
+    cursor: pointer;
+}
+
+.btn-archive{
+    height: 2em;
+    border: none;
+    font-size: 12px;
+}
+
+.bi {
+    vertical-align: 0 !important; 
+}
+
+.not-read {
+    background-color: #ebebebb0;
+}
+
+.header-sender {
+    font-weight: 600;
+    color: #737373;
+}
+
+#email-header{
+    font-size: 14px;
+}
+
+#email-header p{
+    display: inline-flex;
+    column-gap: 0.5em;
+    margin: 0;
+}
+
+#email-header span {
+    font-weight: 500;
+}
+
+#email-view {
+    display: none;
+    row-gap: 1em;
+}
+
+#email-view button{
+    width: fit-content;
+    margin: 1em 0 0;
+}
+
+#email-view hr{
+    width: 100%;
+    margin: 1em 0;
+}
+
+
+.hide{
+    display: none !important;
+}
+
+.show{
+    display: block !important;
+}
+
+.display-element-inline{
+    display: inline-block;
+}
+
+.mb-1{
+    white-space: pre-line;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#messsage{
+    display: hide;
+}
+
+.info{
+    color: #8d8d8d;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 22px;
+}

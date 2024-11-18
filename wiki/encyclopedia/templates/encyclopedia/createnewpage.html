@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    <div id="new-page-form">
+        <form action ={% url 'save-new-article' %} name = 'new article' method='post'>
+            {% csrf_token %}
+            <div class='tlt-inpt'>
+                <h5>Title: <h5/>
+                {{ NewArticle.title }}
+            </div>
+            {{ NewArticle.article }}
+            <span><input type="submit" value="Save"></span>
+            {% for message in messages %}
+            <div{% if message.tags %} id="msg" class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </form>
+    </div>
+{% endblock %}

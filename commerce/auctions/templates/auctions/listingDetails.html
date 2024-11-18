@@ -1,0 +1,93 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Listing: {{ listing.item_name }}</h2>
+    <div class="listing-pic">
+        <img src={{ listing.img }} alt="drawing of a cat">
+        {% if listing.user != user %}
+            <a href={% url 'edit_watchlist' listing.id %}>
+                <button id='watchist-btn' class='btn btn-primary'>
+                    {% if in_watchlist %}    
+                        Remove from watchlist
+                    {% else %}
+                        Add to watchlist
+                    {% endif %}
+                </button>
+            </a>
+        {% endif %}
+    </div>
+    <div class='listing-item-desc'><p>{{ listing.description }}</p></div>
+    <div class="listing-item-price">
+        <span>$</span>
+        {% if bids_info.highest_bid %}
+            {{ bids_info.highest_bid }}
+        {% else %}
+            {{ listing.current_price }}
+        {% endif %}
+    </div>
+    <p>{{ bids_info.bids_count }} bid(s) sofar {% if listing.user != user %}Your bid is the current bid{% endif %}</p>
+    <div class="bid">
+        {% if listing.user == user %}
+            {% if listing.active %}
+                <a href={% url 'close auction' listing.id %}>
+                    <button class='btn btn-primary'>
+                        Close auction
+                    </button>
+                </a>
+            {% endif %}
+        {% else %}
+            {% if listing.active %}
+            <form action={% url 'place bid' listing.id %} method="post">
+                {% csrf_token %}
+                {% load widget_tweaks %}
+                {% render_field forms.Bid.amount placeholder="Bid" class="form-control"%}
+                <input class="btn btn-primary" type="submit" value="place bid">
+            {% endif %}
+            </form>
+        {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <div{% if message.tags %} id="pop-txt" class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if forms.Bid.errors %}
+            <div id="pop-txt" class='error'>
+                    {% for field, error_list in forms.Bid.errors.items %}
+                        {% for error in error_list %}
+                            {{ error }}!
+                        {% endfor %}
+                    {% endfor %}
+            </div>
+        {% endif %}
+        </div>
+        <div class="details">
+            <h6>Details</h6>
+            <ul style=>
+                <li>Listed by: {{ listing.user.username }}</li>
+                {% if listing.active %}
+                    <li>Status:<span id="status" style="color: #027f2d;"> Active</span></li>
+                {% else %}
+                    <li>Status:<span id="status" style="color: #959494;"> Closed</span></li>
+                    <li>Winner: {{ listing.winner.username }}</li>
+                {% endif %}
+                <li>Category: {{ listing.category }}</li>
+
+            </ul>
+        </div>
+        <div id="comments">
+            <h6>Comments</h6>
+            <ul>
+                {% for comment in comments %}
+                <li class='comment'>
+                    <p><b>{{ comment.user.username }}</b><br>{{ comment.comment }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div id='add-comment'>
+            <form action={% url 'add comment' listing.id %} method="post">
+                {% csrf_token %}
+            {% render_field forms.Comment.comment placeholder="Comment" class="form-control"%}
+            <input class="btn btn-primary" type="submit" value="Add Comment">
+        </div>
+{% endblock %}

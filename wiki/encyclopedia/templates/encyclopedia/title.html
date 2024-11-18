@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {% if entry %}
+        <a id="edit-article" href="edit-content">Edit</a>
+        {{ entry|safe }}
+    {% else %}
+        <h3>Error</h3>
+        <h6>No page with the title "{{title}}" is found</h6>
+    {% endif %}
+    {% for message in messages %}
+        <div{% if message.tags %} id="msg" class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+{% block body %}
+    <h2>{{ request.user.email }}</h2>
+
+    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <hr>
+    <div id="emails-view" class='show'>
+        <h3 id='mailbox-header'>Inbox</h3>
+        <div id='message', class='hide'>
+            <h5></h5>
+        </div>
+        <ul id='mailbox' class="list-group">
+            <li href="#" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+              </div>
+              <p class="mb-1">Some placeholder content in a paragraph.</p>
+              <small>And some small print.</small>
+            </li>
+        </ul>
+    </div>
+    <div id="compose-view" class='hide'>
+        <h3>New Email</h3>
+        <form id="compose-form">
+            <div class="form-group">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <input id="send-email" type="submit" class="btn btn-primary"/>
+        </form>
+    </div>
+    <div id="email-view" class='hide'>        
+        <table id="email-header">
+            <tbody cellpadding="0">
+                <tr colspan="1">
+                    <td id='header-sender' colspan="2"><span>from: </span><p id>User1@domain.com</p></td>
+                </tr>
+                <tr id='header-recipients' colspan="1">
+                    <td colspan="2"><span>to: </span><p>User2@domain.com</p></td>
+                </tr>
+                <tr id='header-subject' colspan="1">
+                    <td colspan="2"><span>subject: </span><p>User2@domain.com</p></td>
+                </tr>
+                <tr id='header-timestamp' colspan="1">
+                    <td colspan="2"><span>Timestamp: </span><p>User2@domain.com</p></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
+        <button class="btn btn-sm btn-outline-primary" id="archive">Archive</button>
+        <hr>
+        <p>How about we meet tomorrow at 3pm?</p>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}

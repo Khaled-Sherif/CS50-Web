@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <h4{% if message.tags %} id='background-info' class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+        {% endfor %}
+    {% else %}
+        {% for listing in listings %} 
+            <div>
+                <ul class='cards-container'>
+                    <a href="{% url 'view listing' listing.id %}" target=_blank>
+                        <article class='listing-card'>
+                            <div class='card-pic'><img src='{{ listing.img }}'></div>
+                            <div class='card-item-info'>
+                                <div class='card-item-name'>{{ listing.item_name }}</div>
+                                <div class='card-item-price'><span>Price: </span>{{ listing.current_price }}</div>
+                                <div class='card-item-desc'><p>{{ listing.description }}</p></div>
+                                <div class='card-listing-date'><span>{{ listing.date }}</span></div>
+                            </div>
+                        </article>
+                    </a>
+                </ul>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Article
+{% endblock %}
+
+{% block body %}
+    <div id="new-page-form">
+        <form action ="/wiki/edit-content/{{ title }}" name = 'new article' method='post'>
+            {% csrf_token %}
+            <div class='tlt-inpt'>
+                <h5>Title: <h5/>
+                {{ EditArticle.title_disabled }}
+            </div>
+            {{ EditArticle.article }}
+            <span><input type="submit" value="Save"></span>
+        </form>
+    </div>
+{% endblock %}
